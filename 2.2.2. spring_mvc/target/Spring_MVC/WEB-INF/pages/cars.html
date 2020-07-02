@@ -6,14 +6,11 @@
     <title></title>
 </head>
 <body>
-
+<th:block th:each="msg : ${locale}">
+    <h1 th:text="${msg}"></h1>
+</th:block>
 <th:block th:each="msg : ${listOfCars}">
     <h1 th:text="${msg}"></h1>
 </th:block>
-<div>
-    <a th:href="@{'?locale=en'}">EN</a>
-    <a th:href="@{'?locale=ru'}">RU</a>
-    <h1 th:text="#{label}"></h1>
-</div>
 </body>
 </html>
