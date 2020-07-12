@@ -1,4 +1,4 @@
-package web.controller;
+package controller;
 
 import Service.Service;
 import org.springframework.stereotype.Controller;
@@ -18,12 +18,22 @@ public class CarController {
     Service service = new Service();
     @GetMapping(value ="/cars")
     public String printCars(ModelMap model, @RequestParam("locale") String locale) {
-        if(locale.equals("en")){
-            model.addAttribute("locale",EN);
+        if(locale!=null){
+            if(locale.equals("en")){
+                model.addAttribute("locale",EN);
+            }
+            else{
+                model.addAttribute("locale",RU);
+            }
         }
         else{
-            model.addAttribute("locale",RU);
+            model.addAttribute("locale",EN);
+            List<String> listOfCars = new ArrayList<>();
+            listOfCars = service.getCar();
+            model.addAttribute("listOfCars",listOfCars);
+            return "cars";
         }
+
         List<String> listOfCars = new ArrayList<>();
         listOfCars = service.getCar();
         model.addAttribute("listOfCars",listOfCars);

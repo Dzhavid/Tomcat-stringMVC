@@ -1,4 +1,4 @@
-package web.config;
+package config;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("web")
+@ComponentScan("controller")
 public class WebConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
